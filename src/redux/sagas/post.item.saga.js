@@ -18,4 +18,8 @@ function* postItem(action){
     }
 }
 
-export default postItem;
+function* makePost(){
+    yield takeLatest('POST_ITEM', postItem)
+}
+
+export default makePost;
