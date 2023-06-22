@@ -32,10 +32,18 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const postError = (state = '', action) => {
+  if (action.type === 'POST_ERR'){
+    return 'There was a problem adding an item'
+  }
+  return state;
+};
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  postError,
 });
