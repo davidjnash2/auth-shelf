@@ -5,7 +5,7 @@ import ItemForm from '../ItemForm/ItemForm';
 
 function ShelfPage() {
 	const items = useSelector((store) => store.items);
-
+	const user = useSelector((store) => store.user);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -13,16 +13,24 @@ function ShelfPage() {
 	}, []);
 
 	return (
-		<div className="container">
-			<h2>Shelf</h2>
-			<ItemForm />
-			<p>All of the available items can be seen here.</p>
-			{items.map((item) => (
-				<div key={item.id}>
-					<Item item={item} />
-				</div>
-			))}
-		</div>
+		<>
+			{
+				user.id ?
+
+					(<div className="container">
+						<h2>Shelf</h2>
+						<ItemForm />
+						<p>All of the available items can be seen here.</p>
+						{items.map((item) => (
+							<div key={item.id}>
+								<Item item={item} />
+							</div>
+						))}
+					</div>)
+					:
+					(<h1>GET WRECKED!</h1>)
+			}
+		</>
 	);
 }
 
