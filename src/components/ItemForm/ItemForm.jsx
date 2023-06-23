@@ -1,19 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from 'react';
 
 function ItemForm() {
 	const dispatch = useDispatch();
-	const [image_url, setImage_Url] = useSelector("");
-	const [description, setDescription] = useSelector("");
-	const addItem = (item) => {
-		e.preventDefault();
+	const [image_url, setImage_Url] = useState("");
+	const [description, setDescription] = useState("");
+	const addItem = (e) => {
+		// e.preventDefault();
+		const item = {
+			image_url,
+			description
+		}
+		console.log(image_url, description);
+		console.log(item);
 		dispatch({ type: "POST_ITEM", payload: item });
 	};
 	return (
 		<>
 			<form
-				onSubmit={(e) => {
-					addItem({ image_url, description });
-				}}
+				onSubmit={addItem}
 			>
 				<label htmlFor="url">
 					<p>Enter your URL here: </p>
